@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserManagmentFinalProject.DataBase.Repo;
 
 namespace UserManagmentFinalProject.DataBase.Models
 {
@@ -20,8 +21,8 @@ namespace UserManagmentFinalProject.DataBase.Models
             LastName = lastName;
             Email = email;
             Password = password;
-
             
+
         }
         public virtual string GetInfo()
         {
