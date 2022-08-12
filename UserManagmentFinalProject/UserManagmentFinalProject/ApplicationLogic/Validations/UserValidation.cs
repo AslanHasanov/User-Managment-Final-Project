@@ -38,6 +38,7 @@ namespace UserManagmentFinalProject.ApplicationLogic.Validations
 
             return false;
         }
+
         public static bool IsValidEmail(string email)
         {
             Regex regex = new Regex(@"^[A-Za-z0-9]{10,20}@code\.edu\.az$");
@@ -50,6 +51,7 @@ namespace UserManagmentFinalProject.ApplicationLogic.Validations
 
             return false;
         }
+
         public static bool IsUserExist(string email)
         {
             if (UserRepo.IsUserExistsByEmail(email))
@@ -57,6 +59,32 @@ namespace UserManagmentFinalProject.ApplicationLogic.Validations
                 Console.WriteLine("User already exists");
                 return true;
             }
+
+
+            return false;
+        }
+
+        public static bool IsPasswordsMatch(string password, string confirmPassword)
+        {
+            if (password == confirmPassword)
+            {
+                return true;
+            }
+            Console.WriteLine("Password is not match");
+
+
+            return false;
+
+        }
+
+        public static bool IsValidPassword(string password)
+        {
+            Regex regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$");
+            if (regex.IsMatch(password))
+            {
+                return true;
+            }
+            Console.WriteLine("The password you entered is incorrect");
 
 
             return false;
