@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserManagmentFinalProject.DataBase.Models.Common;
 using UserManagmentFinalProject.DataBase.Repo;
 
 namespace UserManagmentFinalProject.DataBase.Models
 {
-    public class User
+    public class User:Entity<int>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -21,7 +22,14 @@ namespace UserManagmentFinalProject.DataBase.Models
             LastName = lastName;
             Email = email;
             Password = password;
-            
+            if (id != null)
+            {
+                Id = id.Value;
+            }
+            else
+            {
+                Id = UserRepo.IdCounter;
+            }
 
         }
         public virtual string GetInfo()
