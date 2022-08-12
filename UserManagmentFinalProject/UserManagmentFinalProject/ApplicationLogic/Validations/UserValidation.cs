@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using UserManagmentFinalProject.DataBase.Repo;
 
 namespace UserManagmentFinalProject.ApplicationLogic.Validations
 {
@@ -33,6 +34,29 @@ namespace UserManagmentFinalProject.ApplicationLogic.Validations
             }
             Console.WriteLine("The name you entered is incorrect, make sure the name contains only letters," +
                 "the first letter is capitalized, and the length is greater than 3 and less than 30.");
+
+
+            return false;
+        }
+        public static bool IsValidEmail(string email)
+        {
+            Regex regex = new Regex(@"^[A-Za-z0-9]{10,20}@code\.edu\.az$");
+            if (regex.IsMatch(email))
+            {
+                return true;
+            }
+            Console.WriteLine("The email you entered is incorrect");
+
+
+            return false;
+        }
+        public static bool IsUserExist(string email)
+        {
+            if (UserRepo.IsUserExistsByEmail(email))
+            {
+                Console.WriteLine("User already exists");
+                return true;
+            }
 
 
             return false;
