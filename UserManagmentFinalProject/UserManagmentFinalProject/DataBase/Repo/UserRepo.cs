@@ -30,5 +30,11 @@ namespace UserManagmentFinalProject.DataBase.Repo
             DbContext.Add(new User("Yehya", "Mahmudov", "yehya@gmail.com", "123"));
             DbContext.Add(new User("Aslan", "Hasan", "aslan@gmail.com", "123"));
         }
+        public static User AddUser(string firstName, string lastName, string email, string password)
+        {
+            User user = new User(firstName, lastName, email, password, IdCounter);
+            DbContext.Add(user);
+            return user;
+        }
     }
 }
