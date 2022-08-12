@@ -4,11 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UserManagmentFinalProject.ApplicationLogic.Validations;
+using UserManagmentFinalProject.DataBase.Models;
+using UserManagmentFinalProject.DataBase.Repo;
 
 namespace UserManagmentFinalProject.ApplicationLogic
 {
     public class Authentication
     {
+        public static void Register()
+        {
+            string firstName = GetFirstName();
+            string lastName = GetLastName();
+            string email = GetEmail();
+            string password = GetPassword();
+
+            User user = UserRepo.AddUser(firstName, lastName, email, password);
+            Console.WriteLine($"User successfully registered, his/her details are : {user.GetInfo()}");
+        }
+
         private static string GetFirstName()
         {
             string firstName = string.Empty;
