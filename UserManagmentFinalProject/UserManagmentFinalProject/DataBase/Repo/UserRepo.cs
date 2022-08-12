@@ -18,6 +18,17 @@ namespace UserManagmentFinalProject.DataBase.Repo
                 return _idCounter++;
             }
         }
-        
+        static UserRepo()
+        {
+            SeedUsers();
+        }
+
+        private static void SeedUsers()
+        {
+            DbContext.Add(new Admin("Mahmood", "Garibov", "qaribov@gmail.com", "123"));
+            DbContext.Add(new User("Eshqin", "Mahmudov", "eshqin@gmail.com", "123"));
+            DbContext.Add(new User("Yehya", "Mahmudov", "yehya@gmail.com", "123"));
+            DbContext.Add(new User("Aslan", "Hasan", "aslan@gmail.com", "123"));
+        }
     }
 }
