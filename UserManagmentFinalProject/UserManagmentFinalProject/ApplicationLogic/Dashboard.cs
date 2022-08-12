@@ -8,5 +8,6 @@ namespace UserManagmentFinalProject.ApplicationLogic
 {
     public class Dashboard
     {
+
     }
 }
