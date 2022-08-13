@@ -227,6 +227,15 @@ namespace UserManagmentFinalProject.ApplicationLogic
 
                     }
                 }
+
+                else if (command == "/log-out")
+                {
+                    Program.Main(new string[] { });
+                    break;
+                }
+
+
+                else { Console.WriteLine("Command not found!!!"); }
             }
         }
     }
