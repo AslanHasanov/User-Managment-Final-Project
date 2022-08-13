@@ -153,6 +153,26 @@ namespace UserManagmentFinalProject.ApplicationLogic
                         Console.WriteLine(inbox.ToString());
                     }
                 }
+
+                else if (command == "/add-comment")
+                {
+                    Console.Write("Enter Blog code: ");
+                    string blogCode = Console.ReadLine();
+
+                    Blog blog = blogrepo.GetById(blogCode);
+                    if (blog != null)
+                    {
+                        Comment comments = new Comment(blog, CurrentUser, BlogWorks.GetComment());
+                        blogrepo.Add(blog);
+
+                        Inbox inbox = new Inbox($"This blog cod's {blog.Id} {blog.FromUser.FirstName}, {blog.FromUser.LastName} added comment", blog.FromUser);
+                        inboxRepo.Add(inbox);
+
+                        Console.WriteLine("Comment added to blog");
+                    }
+                    else { Console.WriteLine("Blog not found"); }
+
+                }
             }
         }
     }
