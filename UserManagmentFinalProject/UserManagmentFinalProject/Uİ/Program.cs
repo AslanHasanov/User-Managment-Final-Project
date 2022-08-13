@@ -35,6 +35,10 @@ namespace UserManagmentFinalProject.Uİ
                 {
                     Authentication.Login();
                 }
+                else if (command == "/show-blogs-with-comments")
+                {
+                    BlogWorks.ShowBlogsWithComments();
+                }
             }
         }
     }
