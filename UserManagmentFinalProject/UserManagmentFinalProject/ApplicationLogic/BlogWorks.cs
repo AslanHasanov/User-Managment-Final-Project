@@ -25,5 +25,18 @@ namespace UserManagmentFinalProject.ApplicationLogic
 
             return comment;
         }
+
+        public static string GetTitle()
+        {
+            Console.Write("Enter title: ");
+            string title = Console.ReadLine();
+            while (!Validation.IsLengthBetween(title, 10, 35))
+            {
+                Console.Write("Title length is incorrect, try again :");
+                title = Console.ReadLine();
+            }
+
+            return title;
+        }
     }
 }
