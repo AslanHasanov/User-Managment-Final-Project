@@ -47,6 +47,14 @@ namespace UserManagmentFinalProject.Uİ
                 {
                     BlogWorks.FindBlogByCode();
                 }
+                else if (command == "/exit")
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("command not found " + command);
+                }
             }
         }
     }
