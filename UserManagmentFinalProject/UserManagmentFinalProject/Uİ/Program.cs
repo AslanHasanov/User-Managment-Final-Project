@@ -1,4 +1,5 @@
 ﻿using System;
+using UserManagmentFinalProject.ApplicationLogic;
 using UserManagmentFinalProject.ApplicationLogic.Validations;
 
 namespace UserManagmentFinalProject.Uİ
@@ -19,6 +20,18 @@ namespace UserManagmentFinalProject.Uİ
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(" /exit");
             Console.ForegroundColor = ConsoleColor.Green;
+
+            while (true)
+            {
+                Console.WriteLine();
+                Console.Write("Enter command : ");
+                string command = Console.ReadLine();
+
+                if (command == "/register")
+                {
+                    Authentication.Register();
+                }
+            }
         }
     }
 }
