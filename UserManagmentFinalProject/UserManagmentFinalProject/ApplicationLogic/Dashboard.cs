@@ -74,6 +74,24 @@ namespace UserManagmentFinalProject.ApplicationLogic
                         Console.WriteLine();
                     }
                 }
+
+                else if (command == "/approve-blog")
+                {
+                    Console.Write("Enter blog code: ");
+                    string blogCode = Console.ReadLine();
+
+                    Blog blog = blogRepo.GetById(blogCode);
+
+                    if (blog != null && blog.Status == BlogStatus.Sended)
+                    {
+                        blog.Status = BlogStatus.Approved;
+                        Inbox inbox = new Inbox($"This blog cod's {blog.Id} approved", blog.FromUser);
+                        inboxRepo.Add(inbox);
+
+                        Console.WriteLine("Blog succesfully approved");
+                    }
+
+                }
             }
         }
     }
