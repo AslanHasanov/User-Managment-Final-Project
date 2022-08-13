@@ -74,5 +74,56 @@ namespace UserManagmentFinalProject.ApplicationLogic
                 }
             }
         }
+
+        public static void ShowFilteredBlogsWithComments()
+        {
+            Console.Write(" Commands :\n /title \n /first-name");
+            Console.WriteLine();
+            while (true)
+            {
+                Console.Write("Enter filter :");
+                string command = Console.ReadLine();
+
+                if (command == "/title")
+                {
+                    Console.Write("Enter title: ");
+                    string targetTitle = Console.ReadLine();
+                    int counter = 1;
+
+                    foreach (Blog blog in blogRepo.GetAll(b => b.Title.Contains(targetTitle)))
+                    {
+                        Console.WriteLine(blog.GetBlogInfo());
+
+                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                        {
+                            Console.WriteLine($"{counter} {comment.GetInfo()}");
+                            counter++;
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
+                else if (command == "/first-name")
+                {
+                    Console.Write("Enter first name: ");
+                    string targetName = Console.ReadLine();
+                    int counter = 1;
+
+                    foreach (Blog blog in blogRepo.GetAll(b => b.FromUser.FirstName == targetName))  //bura
+                    {
+                        Console.WriteLine(blog.GetBlogInfo());
+
+                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                        {
+                            Console.WriteLine($"{counter} {comment.GetInfo()}");
+                            counter++;
+                            Console.WriteLine();
+                        }
+                    }
+                }
+
+                else { Console.WriteLine("Command not found"); }
+            }
+        }
     }
 }
