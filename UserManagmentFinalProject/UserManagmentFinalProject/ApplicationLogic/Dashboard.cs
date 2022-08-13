@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UserManagmentFinalProject.DataBase.Models;
 using UserManagmentFinalProject.DataBase.Models.Enums;
 using UserManagmentFinalProject.DataBase.Repo;
+using UserManagmentFinalProject.Uİ;
 
 namespace UserManagmentFinalProject.ApplicationLogic
 {
@@ -109,6 +110,13 @@ namespace UserManagmentFinalProject.ApplicationLogic
                         Console.WriteLine("Blog succesfully rejected");
                     }
                 }
+
+                else if (command == "/log-out")
+                {
+                    Program.Main(new string[] { });
+                    break;
+                }
+                else { Console.WriteLine("Command not found"); }
             }
         }
     }
