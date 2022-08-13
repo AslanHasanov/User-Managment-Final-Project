@@ -92,6 +92,23 @@ namespace UserManagmentFinalProject.ApplicationLogic
                     }
 
                 }
+
+                else if (command == "/reject-blog")
+                {
+                    Console.Write("Enter blog code: ");
+                    string blogCode = Console.ReadLine();
+
+                    Blog blog = blogRepo.GetById(blogCode);
+
+                    if (blog != null && blog.Status == BlogStatus.Sended)
+                    {
+                        blog.Status = BlogStatus.Rejected;
+                        Inbox inbox = new Inbox($"This blog cod's {blog.Id} rejected", blog.FromUser);
+                        inboxRepo.Add(inbox);
+
+                        Console.WriteLine("Blog succesfully rejected");
+                    }
+                }
             }
         }
     }
