@@ -27,6 +27,43 @@ namespace UserManagmentFinalProject.ApplicationLogic
                 "\n /approve-blog " +
                 "\n /reject-blog " +
                 "\n /log-out");
+
+            while (true)
+            {
+                Console.WriteLine();
+                Console.Write("Enter command :");
+                string command = Console.ReadLine();
+
+                if (command == "/show-users")
+                {
+                    List<User> users = userRepo.GetAll();
+                    int userCounter = 1;
+                    foreach (User user in users)
+                    {
+                        if (user is not Admin)
+                        {
+                            Console.WriteLine($"{userCounter} {user.GetInfo()}");
+                            userCounter++;
+                        }
+                    }
+                }
+
+
+                else if (command == "/show-admins")
+                {
+                    List<User> users = userRepo.GetAll();
+                    int userCounter = 1;
+
+                    foreach (User user in users)
+                    {
+                        if (user is Admin)
+                        {
+                            Console.WriteLine($"{userCounter} {user.GetInfo()}");
+                            userCounter++;
+                        }
+                    }
+                }
+            }
         }
     }
 }
