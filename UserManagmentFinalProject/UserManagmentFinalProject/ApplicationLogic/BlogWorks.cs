@@ -13,6 +13,17 @@ namespace UserManagmentFinalProject.ApplicationLogic
         static BlogRepo blogRepo = new BlogRepo();
         static CommentRepo commentRepo = new CommentRepo();
 
-       
+        public static string GetComment()
+        {
+            Console.Write("Enter comment: ");
+            string comment = Console.ReadLine();
+            while (!Validation.IsLengthBetween(comment, 10, 35))
+            {
+                Console.Write("Comment length is incorrect, try again :");
+                comment = Console.ReadLine();
+            }
+
+            return comment;
+        }
     }
 }
