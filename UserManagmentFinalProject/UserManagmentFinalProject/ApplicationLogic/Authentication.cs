@@ -9,7 +9,7 @@ using UserManagmentFinalProject.DataBase.Repo;
 
 namespace UserManagmentFinalProject.ApplicationLogic
 {
-    public class Authentication
+    public class Authentication  
     {
         public static void Register()
         {
