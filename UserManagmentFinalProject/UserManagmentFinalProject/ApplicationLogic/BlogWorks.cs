@@ -38,5 +38,18 @@ namespace UserManagmentFinalProject.ApplicationLogic
 
             return title;
         }
+
+        public static string GetContent()
+        {
+            Console.Write("Enter content: ");
+            string content = Console.ReadLine();
+            while (!Validation.IsLengthBetween(content, 20, 45))
+            {
+                Console.Write("Content length is incorrect, try again :");
+                content = Console.ReadLine();
+            }
+
+            return content;
+        }
     }
 }
