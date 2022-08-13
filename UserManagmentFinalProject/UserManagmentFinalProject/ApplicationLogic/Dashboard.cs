@@ -20,7 +20,7 @@ namespace UserManagmentFinalProject.ApplicationLogic
             InboxRepo inboxRepo = new InboxRepo();
             UserRepo userRepo = new UserRepo();
             Admin admin = (Admin)UserRepo.GetUserByEmail(CurrentUser.Email);
-
+            Console.WriteLine();
             Console.WriteLine($"Welcome dear admin, {admin.GetInfo()}");
 
             Console.Write("Admin's commands :" +
@@ -130,7 +130,7 @@ namespace UserManagmentFinalProject.ApplicationLogic
             CommentRepo commentrepo = new CommentRepo();
             InboxRepo inboxRepo = new InboxRepo();
             User user = UserRepo.GetUserByEmail(CurrentUser.Email);
-
+            Console.WriteLine();
             Console.WriteLine($"Welcome to your accaunt {user.GetInfo()}");
             Console.Write("Your commands :" +
                 "\n /inbox " +

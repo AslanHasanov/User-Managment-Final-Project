@@ -10,15 +10,15 @@ namespace UserManagmentFinalProject.Uİ
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Validation.Typewrite("\n Commands :" +
-                "\n /register " +
-                "\n /login " +
-                "\n /show-blogs-with-comments" +
-                "\n /show-filtered-blogs-with-comments " +
-                "\n /find-blog-by-code ");
+                "\n/register " +
+                "\n/login " +
+                "\n/show-blogs-with-comments" +
+                "\n/show-filtered-blogs-with-comments " +
+                "\n/find-blog-by-code ");
 
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(" /exit");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("/exit");
             Console.ForegroundColor = ConsoleColor.Green;
 
             while (true)

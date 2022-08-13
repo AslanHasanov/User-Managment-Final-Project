@@ -7,6 +7,7 @@ using UserManagmentFinalProject.ApplicationLogic.Validations;
 using UserManagmentFinalProject.DataBase.Models;
 using UserManagmentFinalProject.DataBase.Models.Enums;
 using UserManagmentFinalProject.DataBase.Repo;
+using UserManagmentFinalProject.Uİ;
 
 namespace UserManagmentFinalProject.ApplicationLogic
 {
@@ -77,7 +78,7 @@ namespace UserManagmentFinalProject.ApplicationLogic
 
         public static void ShowFilteredBlogsWithComments()
         {
-            Console.Write(" Commands :\n /title \n /first-name");
+            Console.Write(" Commands :\n /title \n /first-name \n /log-out");
             Console.WriteLine();
             while (true)
             {
@@ -93,12 +94,12 @@ namespace UserManagmentFinalProject.ApplicationLogic
                     foreach (Blog blog in blogRepo.GetAll(b => b.Title.Contains(targetTitle)))
                     {
                         Console.WriteLine(blog.GetBlogInfo());
-
+                        Console.WriteLine(" ");
                         foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
                         {
                             Console.WriteLine($"{counter} {comment.GetInfo()}");
                             counter++;
-                            Console.WriteLine();
+                           
                         }
                     }
                 }
@@ -112,14 +113,19 @@ namespace UserManagmentFinalProject.ApplicationLogic
                     foreach (Blog blog in blogRepo.GetAll(b => b.FromUser.FirstName == targetName))  //bura
                     {
                         Console.WriteLine(blog.GetBlogInfo());
-
+                        Console.WriteLine(" ");
                         foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
                         {
                             Console.WriteLine($"{counter} {comment.GetInfo()}");
                             counter++;
-                            Console.WriteLine();
+                            
                         }
                     }
+                }
+                else if(command== "/log-out")
+                {
+                    Program.Main(new string[] { });
+                    break;
                 }
 
                 else { Console.WriteLine("Command not found"); }
