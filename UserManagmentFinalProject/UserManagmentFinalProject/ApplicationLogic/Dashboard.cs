@@ -198,6 +198,35 @@ namespace UserManagmentFinalProject.ApplicationLogic
                     BlogRepo.Add(CurrentUser, title, content);
                     Console.WriteLine("Blog added to system");
                 }
+
+                else if (command == "/delete-blog")
+                {
+                    Console.Write("Enter blog code: ");
+                    string blogCode = Console.ReadLine();
+                    Blog blog = blogRepo.GetById(blogCode);
+                    List<Comment> comments = commentrepo.GetAll(c => c.Blog == blog);
+                    List<Inbox> inboxes = inboxRepo.GetAll(i => i.Notification.Contains(blog.Id));
+
+                    if (blog != null)
+                    {
+                        if (blog.FromUser == CurrentUser)
+                        {
+                            blogRepo.Delete(blog);
+                            foreach (Comment comment in comments)
+                            {
+                                commentrepo.Delete(comment);
+                            }
+                            foreach (Inbox inbox in inboxes)
+                            {
+                                inboxRepo.Delete(inbox);
+                            }
+
+                            Console.WriteLine("Blog deleted");
+                        }
+                        else { Console.WriteLine("Blog code is incorrect"); }
+
+                    }
+                }
             }
         }
     }
