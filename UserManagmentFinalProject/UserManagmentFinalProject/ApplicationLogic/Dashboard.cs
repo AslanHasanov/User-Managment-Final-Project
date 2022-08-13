@@ -173,6 +173,22 @@ namespace UserManagmentFinalProject.ApplicationLogic
                     else { Console.WriteLine("Blog not found"); }
 
                 }
+
+                else if (command == "/blogs")
+                {
+                    List<Blog> blogs = blogRepo.GetAll(b => b.FromUser == CurrentUser);
+
+                    foreach (Blog blog in blogs)
+                    {
+                        if (blog != null)
+                        {
+                            Console.WriteLine(blog.GetBlogInfo());
+                            Console.WriteLine();
+                        }
+                        else { Console.WriteLine("Not found blog"); }
+
+                    }
+                }
             }
         }
     }
