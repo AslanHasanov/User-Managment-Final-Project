@@ -31,6 +31,10 @@ namespace UserManagmentFinalProject.Uİ
                 {
                     Authentication.Register();
                 }
+                else if (command == "/login")
+                {
+                    Authentication.Login();
+                }
             }
         }
     }
