@@ -43,6 +43,10 @@ namespace UserManagmentFinalProject.Uİ
                 {
                     BlogWorks.ShowFilteredBlogsWithComments();
                 }
+                else if (command == "/find-blog-by-code")
+                {
+                    BlogWorks.FindBlogByCode();
+                }
             }
         }
     }
