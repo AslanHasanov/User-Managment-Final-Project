@@ -27,5 +27,11 @@ namespace UserManagmentFinalProject.DataBase.Repo
             DbContext.Add(blog);
             return blog;
         }
+        static BlogRepo()
+        {
+            DbContext.Add(new Blog(UserRepo.GetUserByEmail("yehya@gmail.com"), "Informasiya Texnologiyalari1", "Proqramlashdirma dilleri", BlogStatus.Approved, "yehya"));
+            DbContext.Add(new Blog(UserRepo.GetUserByEmail("eshqin@gmail.com"), "Informasiya Texnologiyalari2", "Sistem adminstratorlugu", BlogStatus.Sended, "eshqin"));
+            DbContext.Add(new Blog(UserRepo.GetUserByEmail("eshqin@gmail.com"), "Informasiya Texnologiyalari3", "Sistem adminstratorlugu 3", BlogStatus.Sended, "eshqin2"));
+        }
     }
 }
