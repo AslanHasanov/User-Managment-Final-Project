@@ -22,6 +22,32 @@ namespace UserManagmentFinalProject.ApplicationLogic
             Console.WriteLine($"User successfully registered, his/her details are : {user.GetInfo()}");
         }
 
+        public static void Login()
+        {
+            Console.Write("Enter your email :");
+            string email = Console.ReadLine();
+            Console.Write("Enter your password :");
+            string password = Console.ReadLine();
+
+            User user = UserRepo.GetUserByEmail(email);
+
+            if (user != null)
+            {
+                Dashboard.CurrentUser = user;
+
+                if (user is Admin)
+                {
+                    Dashboard.AdminPanel();
+                }
+                else
+                {
+                    Dashboard.UserPanel();
+                }
+            }
+
+            else { Console.WriteLine("User is not found, password or email is inccorrect"); }
+        }
+
         private static string GetFirstName()
         {
             string firstName = string.Empty;
