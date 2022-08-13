@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UserManagmentFinalProject.ApplicationLogic.Validations;
+using UserManagmentFinalProject.DataBase.Models;
+using UserManagmentFinalProject.DataBase.Models.Enums;
 using UserManagmentFinalProject.DataBase.Repo;
 
 namespace UserManagmentFinalProject.ApplicationLogic
@@ -50,6 +52,27 @@ namespace UserManagmentFinalProject.ApplicationLogic
             }
 
             return content;
+        }
+
+        public static void ShowBlogsWithComments()
+        {
+            BlogRepo blogRepo = new BlogRepo();
+            CommentRepo commentRepo = new CommentRepo();
+            List<Blog> blogs = blogRepo.GetAll();
+            List<Comment> comments = commentRepo.GetAll();
+            int counter = 1;
+
+            foreach (Blog blog in blogRepo.GetAll(b => b.Status == BlogStatus.Approved)) //bura
+            {
+                Console.WriteLine(blog.GetBlogInfo());
+
+                foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                {
+                    Console.WriteLine(counter + " " + comment.GetInfo());
+                    counter++;
+                    Console.WriteLine();
+                }
+            }
         }
     }
 }
