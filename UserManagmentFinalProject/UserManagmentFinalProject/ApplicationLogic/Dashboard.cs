@@ -139,6 +139,21 @@ namespace UserManagmentFinalProject.ApplicationLogic
                 "\n /add-blog " +
                 "\n /delete-blog " +
                 "\n /log-out");
+
+            while (true)
+            {
+                Console.WriteLine();
+                Console.Write("Enter command: ");
+                string command = Console.ReadLine();
+
+                if (command == "/inbox")
+                {
+                    foreach (Inbox inbox in inboxRepo.GetAll(i => i.User == CurrentUser))
+                    {
+                        Console.WriteLine(inbox.ToString());
+                    }
+                }
+            }
         }
     }
 
