@@ -125,5 +125,35 @@ namespace UserManagmentFinalProject.ApplicationLogic
                 else { Console.WriteLine("Command not found"); }
             }
         }
+
+        public static void FindBlogByCode()
+        {
+            BlogRepo blogRepo = new BlogRepo();
+            CommentRepo commentRepo = new CommentRepo();
+            List<Blog> blogs = blogRepo.GetAll();
+
+            while (true)
+            {
+                Console.Write("Enter code :");
+                string blogCode = Console.ReadLine();
+                int counter = 1;
+
+                foreach (Blog blog in blogs)
+                {
+                    if (blog.Id == blogCode && blog.Status == BlogStatus.Approved)
+                    {
+                        Console.WriteLine(blog.GetBlogInfo());
+                        foreach (Comment comment in commentRepo.GetAll(c => c.Blog == blog))
+                        {
+                            Console.WriteLine(counter + " " + comment.GetInfo());
+                            counter++;
+                            Console.WriteLine();
+                        }
+                    }
+
+                    else { Console.WriteLine("Code not found "); break; }
+                }
+            }
+        }
     }
 }
