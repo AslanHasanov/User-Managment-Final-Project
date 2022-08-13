@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using UserManagmentFinalProject.DataBase.Models;
 using UserManagmentFinalProject.DataBase.Models.Enums;
 using UserManagmentFinalProject.DataBase.Repo;
+using UserManagmentFinalProject.DataBase.Repo.Common;
 using UserManagmentFinalProject.Uİ;
 
 namespace UserManagmentFinalProject.ApplicationLogic
@@ -120,4 +121,25 @@ namespace UserManagmentFinalProject.ApplicationLogic
             }
         }
     }
+    public partial class Dashboard
+    {
+        public static void UserPanel()
+        {
+            Repository<Blog, string> blogRepo = new Repository<Blog, string>();
+            BlogRepo blogrepo = new BlogRepo();
+            CommentRepo commentrepo = new CommentRepo();
+            InboxRepo inboxRepo = new InboxRepo();
+            User user = UserRepo.GetUserByEmail(CurrentUser.Email);
+
+            Console.WriteLine($"Welcome to your accaunt {user.GetInfo()}");
+            Console.Write("Your commands :" +
+                "\n /inbox " +
+                "\n /add-comment " +
+                "\n /blogs " +
+                "\n /add-blog " +
+                "\n /delete-blog " +
+                "\n /log-out");
+        }
+    }
+
 }
