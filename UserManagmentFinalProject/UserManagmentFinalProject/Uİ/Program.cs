@@ -39,6 +39,10 @@ namespace UserManagmentFinalProject.Uİ
                 {
                     BlogWorks.ShowBlogsWithComments();
                 }
+                else if (command == "/show-filtered-blogs-with-comments")
+                {
+                    BlogWorks.ShowFilteredBlogsWithComments();
+                }
             }
         }
     }
