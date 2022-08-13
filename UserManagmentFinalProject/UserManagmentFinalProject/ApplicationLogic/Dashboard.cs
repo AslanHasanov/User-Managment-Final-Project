@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UserManagmentFinalProject.DataBase.Models;
+using UserManagmentFinalProject.DataBase.Models.Enums;
 using UserManagmentFinalProject.DataBase.Repo;
 
 namespace UserManagmentFinalProject.ApplicationLogic
@@ -61,6 +62,16 @@ namespace UserManagmentFinalProject.ApplicationLogic
                             Console.WriteLine($"{userCounter} {user.GetInfo()}");
                             userCounter++;
                         }
+                    }
+                }
+
+                else if (command == "/show-auditing-blogs")
+                {
+                    List<Blog> blogs = blogRepo.GetAll(b => b.Status == BlogStatus.Sended);
+                    foreach (Blog blog in blogs)
+                    {
+                        Console.WriteLine(blog.GetBlogInfo());
+                        Console.WriteLine();
                     }
                 }
             }
