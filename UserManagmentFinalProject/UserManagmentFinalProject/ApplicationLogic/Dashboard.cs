@@ -189,6 +189,15 @@ namespace UserManagmentFinalProject.ApplicationLogic
 
                     }
                 }
+
+                else if (command == "/add-blog")
+                {
+                    string title = BlogWorks.GetTitle();
+                    string content = BlogWorks.GetContent();
+
+                    BlogRepo.Add(CurrentUser, title, content);
+                    Console.WriteLine("Blog added to system");
+                }
             }
         }
     }
